@@ -12,10 +12,11 @@ hello = APIRouter()
 @hello.get("/")
 async def read_root(Hello):
     message = f"Hello world! From FastAPI running on Uvicorn with Gunicorn. Using Python {version}"
+    message = Hello.message
     return {"message": message}
 
 @hello.get("/index")
 async def read_db(Hello):
     sql = '''select * from table_hello;'''
-    data = await await_dbconn.get_data_sql_all(sql)
+    data = await awit_dbconn.get_data_sql_all(sql)
     return {"message": data}
